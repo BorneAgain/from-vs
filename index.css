@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    height: 100vh;
+}
+
+.profile-container {
+    display: flex;
+}
+
+.profile-content {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    border: 1px dotted green;
+    margin-right: 20px;
+}
+
+.profile-icon {
+    position: absolute;
+    top: -18%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.profile-stats {
+    position: absolute;
+    top: 20%;
+    color: green;
+    font-size: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.exp {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+
+/* profile end */
+
+.rating-container {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rating-content {
+    position: relative;
+    width: 300px;
+    height: 130px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: -2px 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+.emoji {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.emoji-icon {
+    transform: translateX(0px);
+    margin-right: 2px;
+    transition: transform 0.2s;
+}
+
+.stars {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.star-icon {
+    font-size: 25px;
+    color: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+
+.active {
+    color: gold;
+}
+
+@media screen and (max-width: 450px) {
+    .profile-content {
+        width: 100px;
+        height: 100px;
+        border: 1px dotted green;
+        margin-right: 10px;
+    }
+    .profile-stats {
+        font-size: 25px;
+    }
+    .exp {
+        font-size: 10px;
+    }
+}
