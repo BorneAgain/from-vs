@@ -23,7 +23,7 @@
     position: relative;
     width: 150px;
     height: 100px;
-    border: 1px dotted green;
+    border: 1px dotted blue;
     margin-right: 20px;
 }
 
@@ -37,7 +37,7 @@
 .profile-stats {
     position: absolute;
     top: 20%;
-    color: green;
+    color: blue;
     font-size: 30px;
     left: 50%;
     transform: translateX(-50%);
@@ -115,7 +115,6 @@
         margin-right: 10px;
     }
     .profile-stats {
-        color: blue;
         top: 28%;
         font-size: 30px;
     }
