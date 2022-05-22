@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../icons1/css/all.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Document</title>
+    <!-- "red", "lightblue", "orange", "lightgreen", "green" -->
+    <!-- angry frown meh smile laugh -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: cursive;
+        }
+        
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: yellow;
+            height: 100vh;
+        }
+        
+        .profile-container {
+            display: flex;
+        }
+        
+        .profile-content {
+            position: relative;
+            width: 150px;
+            height: 100px;
+            border: 1px dotted green;
+            margin-right: 20px;
+        }
+        
+        .profile-icon {
+            position: absolute;
+            top: -18%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .profile-stats {
+            position: absolute;
+            top: 20%;
+            color: green;
+            font-size: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .exp {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        /* profile end */
+        
+        .rating-container {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .rating-content {
+            position: relative;
+            width: 300px;
+            height: 130px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: -2px 8px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .emoji {
+            position: absolute;
+            display: flex;
+            left: 50%;
+            top: 10%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .emoji-icon {
+            transform: translateX(0px);
+            margin-right: 2px;
+            transition: transform 0.2s;
+        }
+        
+        .stars {
+            position: absolute;
+            left: 50%;
+            bottom: 10%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        
+        .star-icon {
+            font-size: 25px;
+            color: rgba(211, 211, 211, 0.7);
+            cursor: pointer;
+        }
+        
+        .active {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-content">
+                <i class="fas fa-briefcase fa-2x profile-icon"></i>
+                <div class="profile-stats" data-ceil="15">15</div>
+                <h4 class="exp">Years Experience</h4>
+            </div>
+            <div class="profile-content">
+                <i class="fas fa-cloud fa-2x profile-icon"></i>
+                <div class="profile-stats" data-ceil="260">260</div>
+                <h4 class="exp">Website Made</h4>
+            </div>
+            <div class="profile-content">
+                <i class="fab fa-apple fa-2x profile-icon"></i>
+                <div class="profile-stats" data-ceil="27">27</div>
+                <h4 class="exp">Apps Made</h4>
+            </div>
+        </div>
+        <div class="rating-container">
+            <div class="rating-content">
+                <div class="emoji">
+                    <i class="far fa-angry fa-3x emoji-icon"></i>
+                    <i class="far fa-frown fa-3x emoji-icon"></i>
+                    <i class="far fa-meh fa-3x emoji-icon"></i>
+                    <i class="far fa-smile fa-3x emoji-icon"></i>
+                    <i class="far fa-laugh fa-3x emoji-icon"></i>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star star-icon"></i>
+                    <i class="fas fa-star star-icon"></i>
+                    <i class="fas fa-star star-icon"></i>
+                    <i class="fas fa-star star-icon"></i>
+                    <i class="fas fa-star star-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let stats = document.querySelectorAll(".profile-stats"),
+            emojis = document.querySelectorAll(".emoji-icon"),
+            stars = document.querySelectorAll(".star-icon"),
+            colorArray = ["red", "lightblue", "orange", "lightgreen", "green"];
+        currentIndex(0)
+        stats.forEach(stat => {
+            stat.innerText = 0;
+            let currentStat = +stat.innerText;
+
+            function counter() {
+                const dataCeil = stat.getAttribute("data-ceil");
+                increament = Math.ceil(dataCeil / 15);
+                currentStat += increament;
+                if (currentStat < dataCeil) {
+                    stat.innerText = currentStat
+                    setTimeout(counter, 50)
+                } else {
+                    stat.innerText = dataCeil
+                }
+            }
+            counter()
+        })
+        stars.forEach((star, index) => {
+            star.addEventListener("click", () => {
+                currentIndex(index)
+                    // console.log(index)
+            })
+        })
+
+        function currentIndex(index) {
+            stars.forEach((star, indexN) => {
+                if (indexN < index + 1) {
+                    star.classList.add("active")
+
+                } else {
+                    star.classList.remove("active")
+                }
+                console.log(indexN)
+            })
+            emojis.forEach(emoji => {
+                emoji.style.transform = `translateX(-${index * 50}px)`;
+                emoji.style.color = colorArray[index]
+            })
+
+        }
+    </script>
+</body>
+
+</html>
